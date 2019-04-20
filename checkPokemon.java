@@ -7,23 +7,13 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.*;
 import javax.net.ssl.HttpsURLConnection;
+import org.json.*;
 
-public class checkPokemon implements Runnable{
-	String PokemonName;
-	pokemonData pD;
-	public checkPokemon(String PokemonName, pokemonData pD){
-		this.PokemonName = PokemonName;
-		this.pD = pD;
-	}
-	
-	public void run(){
-		check(PokemonName);
-	}
-	
-	public void check(String pkName){
+public class countPokemons{
+	public static void main(String[] args){
 		URL url;
 		try{
-			String a="https://pokeapi.co/api/v2/pokemon/"+pkName+"/";
+			String a="https://pokeapi.co/api/v2/pokemon/24/";
 			url = new URL(a);
 			
 			HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
@@ -33,10 +23,47 @@ public class checkPokemon implements Runnable{
             // open the stream and put it into BufferedReader
             BufferedReader br = new BufferedReader(
                                new InputStreamReader(conn.getInputStream()));
-            br.close();
-            pD.add(pkName);
-		}catch (Exception e){
 
+            String inputLine;
+            String[] temp;
+            String name;
+            String outputLine="";
+            /*try{
+				while ((inputLine = br.readLine()) != null) {
+					temp = inputLine.split(",");
+					String temm = temp[13];
+					System.out.println(temm.substring(0,18));
+					System.out.println(temm.substring(0,18).equals("\"forms\":[{\"name\":\""));
+					System.out.println(temp[13]);
+					temp = temp[13].split(":");
+					name = temp[2].substring(0,temp[2].length()-1);
+					//System.out.println(name);
+					name = name.substring(1);
+					System.out.println(name);
+				}
+			}catch(Exception e){}
+            */
+            while((inputLine = br.readLine()) != null){
+				outputLine = outputLine+inputLine;
+			}
+			//System.out.println(outputLine);
+            br.close();
+            JSONObject obj = new JSONObject(outputLine);
+            JSONArray arr = obj.getJSONArray("forms");
+           // for(int i = 0; arr.length()>0;i++){
+				System.out.println(arr.getJSONObject(0).getString("name"));
+			//}
+            
+            //System.out.println(pokeName);
+		}catch (FileNotFoundException e){
+			
+		}catch (Exception e){
+			e.printStackTrace();
 		}
 	}
 }
+/*
+ * String url = "https://publicservice.com/feeds";
+URL obj = new URL(url);
+
+*/
