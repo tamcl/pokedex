@@ -48,7 +48,7 @@ public class checkPokemon implements Runnable{
             
             JSONObject obj = new JSONObject(outputLine);
             JSONArray arr = obj.getJSONArray("forms");
-			pD.add(Integer.toString(PokemonName)+". "+arr.getJSONObject(0).getString("name"));
+			pD.add(PokemonName,arr.getJSONObject(0).getString("name"));
             
 		}catch (Exception e){
 
