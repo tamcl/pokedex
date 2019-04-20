@@ -3,7 +3,7 @@ import java.util.*;
 
 
 public class pokemonData{
-	private ArrayList<String> pokemon = new ArrayList<String>();
+	public ArrayList<String> pokemon = new ArrayList<String>();
 	public pokemonData(){
 	
 	}
@@ -15,5 +15,8 @@ public class pokemonData{
 		for(String a:pokemon){
 		System.out.print(a+", ");
 		}
+	}
+	public void number(){
+		System.out.println(pokemon.size());
 	}
 }
