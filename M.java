@@ -8,19 +8,19 @@ public static void main(String[] args){
 	String[] letter = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x" ,"y", "z", " ", "-", "'"};
 	int lettersize = letter.length;
 	int longestName = 11, shortestName = 3;
-	int currentlength = shortestName;
+	int currentlength = 4;
 	int[] namestructure = new int[longestName];
 	
 	
 	for(int i=0;i<longestName;i++){
 		namestructure[i]=lettersize;
 	}
-	for(int i=0;i<shortestName;i++){
+	for(int i=0;i<currentlength;i++){
 		namestructure[i]=0;
 	}
-	namestructure[0]=12;
+	//namestructure[0]=12;
 	
-	while(longestName>=currentlength){
+	/*while(longestName>=currentlength){
 		String currentString = "";
 		for(int i=0;i<currentlength;i++){
 			currentString = currentString + letter[namestructure[i]];
@@ -40,14 +40,34 @@ public static void main(String[] args){
 				namestructure[i]=0;
 			}
 		}
+		
 		if(ListOfThread.size()>=300){
 			joinThread();
+			clear();
+		}
+		if(currentlength==3&&pD.pokemon.size()==2){
+			currentlength++;
+			for(int i=0;i<currentlength;i++){
+				namestructure[i]=0;
+			}
 		}
 		
+	}*/
+	for(int i=1;i<808;i++){
+		setThread(i);
+		/*if(ListOfThread.size()>=1000){
+			joinThread();
+			clear();
+		}*/
 	}
+	joinThread();
+	System.out.println("Done");
+	//pD.print();
+	//pD.number();
+//	setThread(1);
 }
 
-	public static void setThread(String name){
+	public static void setThread(int name){
 		checkPokemon temp = new checkPokemon(name, pD);
 		Thread t = new Thread(temp);
 		t.start();
@@ -63,7 +83,7 @@ public static void main(String[] args){
 		}
 	}
 	
-	public void clear(){
+	public static void clear(){
 		ListOfThread = new ArrayList<Thread>();
 	}
 }
