@@ -53,16 +53,40 @@ public static void main(String[] args){
 		}
 		
 	}*/
-	for(int i=1;i<808;i++){
-		setThread(i);
-		/*if(ListOfThread.size()>=1000){
-			joinThread();
-			clear();
-		}*/
+	
+	boolean go = true;
+	int pokedexNo = 1;
+	int maxpokemon = 807;
+	int maxThread = 100;
+	while(true){
+		if(go==true){
+			setThread(pokedexNo);
+			pokedexNo++;
+		}
+		if(pokedexNo>=maxpokemon+1){
+			break;
+		}
+		if(ListOfThread.size()>=maxThread&&go ==true){
+			go=false;
+		}
+		if(go==false){
+			boolean canGoAgain = true;
+			for(Thread t:ListOfThread){
+				if(t.isAlive()==true){
+					canGoAgain = false;
+					break;
+				}
+			}
+			if(canGoAgain==true){
+				go=true;
+				clear();
+			}
+		}
+		
 	}
 	joinThread();
-	System.out.println("Done");
-	//pD.print();
+	//start();
+	pD.print();
 	//pD.number();
 //	setThread(1);
 }
@@ -73,6 +97,12 @@ public static void main(String[] args){
 		t.start();
 		ListOfThread.add(t);
 	
+	}
+	
+	public static void start(){
+		for(Thread t:ListOfThread){
+			t.start();
+		}
 	}
 	
 	public static void joinThread(){
