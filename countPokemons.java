@@ -8,14 +8,16 @@ import java.net.URLConnection;
 import java.net.*;
 import javax.net.ssl.HttpsURLConnection;
 import org.json.*;
+import java.util.*;
 
 public class countPokemons{
-	public static void main(String[] args){
+	public HashMap<Integer,String> pokemon = new HashMap<Integer,String>();
+	public countPokemons(){
 		for(int i=1;i<=807;i++){
-			print(i);
+			pokemon.put(i,print(i));
 		}
 	}
-	public static void print(int pokedexNo){
+	public static String print(int pokedexNo){
 		URL url;
 		try{
 			String a="https://pokeapi.co/api/v2/pokemon/"+Integer.toString(pokedexNo);
@@ -38,12 +40,13 @@ public class countPokemons{
             br.close();
             JSONObject obj = new JSONObject(outputLine);
             JSONArray arr = obj.getJSONArray("forms");
-			System.out.println(arr.getJSONObject(0).getString("name"));
+			return arr.getJSONObject(0).getString("name");
 		}catch (FileNotFoundException e){
 			
 		}catch (Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
+		return null;
 	}
 }
 
