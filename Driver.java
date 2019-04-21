@@ -11,7 +11,12 @@ public class Driver{
 		while(count<=pokedex){
 			String com = m.pD.pokemon.get(count);
 			String com1 = cP.pokemon.get(count);
-			boolean correct = com.equals(com1);
+			boolean correct = false;
+			try{
+				correct = com.equals(com1);
+			}catch(NullPointerException e){
+				correct = false;
+			}
 			if(correct == false)same=false;
 			System.out.println(count + "\t" + com +"\t\t\t" +com1+"\t\t\t"+correct);
 			count++;
