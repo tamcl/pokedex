@@ -17,3 +17,8 @@
  if you would like to output what you print on your cmd to txt file, you can do the following code instead of the one above:
  
  java -cp java-json.jar.; FILENAME >TEXTFILENAME.txt
+ 
+ try this:
+ 
+ https://pokeapi.co/api/v2/pokemon/?limit=807&offset=0
+ 
