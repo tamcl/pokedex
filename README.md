@@ -22,3 +22,9 @@
  
  https://pokeapi.co/api/v2/pokemon/?limit=807&offset=0
  
+ adSense:
+ https://www.google.com/adsense/start/#/?modal_active=none
+ 
+ adBlock detect method:
+ https://www.maketecheasier.com/block-adblock-detection-website/
+ 
