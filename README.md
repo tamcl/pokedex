@@ -27,4 +27,5 @@
  
  adBlock detect method:
  https://www.maketecheasier.com/block-adblock-detection-website/
+ https://jonathanmh.com/how-to-detect-ad-blockers-adblock-ublock-etc/
  
